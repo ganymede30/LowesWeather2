@@ -16,6 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         return true
     }
+    
+//    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+//       self.window = UIWindow(frame: UIScreen.main.bounds)
+//       let nav1 = UINavigationController()
+//       let mainView = ViewController(nibName: nil, bundle: nil) //ViewController = Name of your controller
+//       nav1.viewControllers = [mainView]
+//       self.window!.rootViewController = nav1
+//       self.window?.makeKeyAndVisible()
+//    }
 
     // MARK: UISceneSession Lifecycle
 

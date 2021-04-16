@@ -21,17 +21,35 @@ class ViewController: UIViewController {
     let searchButton: UIButton = {
         let closureButton = UIButton()
         closureButton.setTitle("Look Up", for: .normal)
-//        closureButton.backgroundColor = UIColor.black
+        closureButton.backgroundColor = UIColor.black
+        closureButton.addTarget(self, action: #selector (searchCity(_:)), for: .touchUpInside)
         return closureButton
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.systemGray
         view.addSubviews(cityEntry, searchButton)
         setUpAllConstraints()
+        setUpNavigationBar()
+    }
+    
+    @objc func searchCity(_ sender: UIButton!){
+        let sb = UIStoryboard(name: "WeeklyWeather", bundle: nil)
+        let vc = sb.instantiateViewController(identifier: "weeklyWeather_VC") as! WeeklyWeatherVC
+        vc.city = cityEntry.text!
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func setUpNavigationBar(){
+        self.navigationController?.navigationBar.barTintColor = .purple
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
 
+}
+
+extension ViewController {
+    
     func setUpAllConstraints() {
         func setUpCityEntryConstraints() {
             cityEntry.translatesAutoresizingMaskIntoConstraints = false
@@ -56,8 +74,7 @@ class ViewController: UIViewController {
         setUpCityEntryConstraints()
         setUpSearchButtonConstraints()
     }
-
-
+    
 }
 
 extension UIView {
